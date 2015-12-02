@@ -1,0 +1,66 @@
+<section class="View View--Register View--RegisterProfile row">
+  <form name="form" data-ng-submit="profile.submit($event)" class="Form Form--Profile">
+    <fieldset>
+      <legend>Votre profil</legend>
+      <div class="form-group">
+        <label for="register-profile-birthdate">Date naissance*</label>
+        <input id="register-profile-birthdate" name="birthdate" class="form-control" type="text" required data-ng-model="profile.model.birthdate"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-birthplace">Lieu naissance*</label>
+        <input id="register-profile-birthplace" name="birthplace" class="form-control" type="text" required data-ng-model="profile.model.birthplace"/>
+      </div>
+<!--
+      <div class="form-group">
+        <label for="register-profile-gender">Sexe*</label>
+        <select id="register-profile-gender" name="gender" class="form-control" type="text" required data-ng-model="profile.model.gender" data-ng-options="gender.value as gender.label for gender in ::options.gender"></select>
+      </div>
+-->
+      <div class="form-group">
+        <label for="register-profile-address">Adresse*</label>
+        <input id="register-profile-address" name="address" class="form-control" type="text" required data-ng-model="profile.model.address"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-zipcode">Code postal*</label>
+        <input id="register-profile-zipcode" name="zipcode" class="form-control" type="text" required data-ng-model="profile.model.zipcode"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-city">Ville*</label>
+        <input id="register-profile-city" name="city" class="form-control" type="text" required data-ng-model="profile.model.city"/>
+      </div>
+<!--
+      <div class="form-group">
+        <label for="register-profile-country">Pays*</label>
+        <select id="register-profile-country" name="country" class="form-control" type="text" required data-ng-model="profile.model.country" data-ng-options="country.value as country.label for country in ::options.country"></select>
+      </div>
+-->
+      <div class="form-group">
+        <label for="register-profile-homenumber">Téléphone fixe</label>
+        <input id="register-profile-homenumber" name="homenumber" class="form-control" type="text" required data-ng-model="profile.model.homenumber"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-phonenumber">Téléphone portable*</label>
+        <input id="register-profile-phonenumber" name="phonenumber" class="form-control" type="text" required data-ng-model="profile.model.phonenumber"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-job">Profession*</label>
+        <input id="register-profile-job" name="job" class="form-control" type="text" required data-ng-model="profile.model.job"/>
+      </div>
+<!--
+      <div class="form-group">
+        <label for="register-profile-wearsize">Taille t-shirt*</label>
+        <select id="register-profile-wearsize" name="wearsize" class="form-control" type="text" required data-ng-model="profile.model.wearsize" data-ng-options="wearsize.value as wearsize.label for wearsize in ::options.wearsize"></select>
+      </div>
+-->
+      <div class="form-group">
+        <label for="register-profile-diet">Régime alimentaire*</label>
+        <input id="register-profile-diet" name="diet" class="form-control" type="text" required data-ng-model="profile.model.diet"/>
+      </div>
+    </fieldset>
+    <div class="btn-group" role="group">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-info" data-ng-click="profile.list()">List</button>
+      <button type="button" class="btn btn-default" data-ng-click="profile.get()">Get</button>
+    </div>
+  </form>
+</section>

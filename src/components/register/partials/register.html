@@ -1,0 +1,30 @@
+<section class="View View--Register View--RegisterProfile row">
+  <form name="form" data-ng-submit="register.submit($event)" class="Form Form--Profile">
+    <fieldset>
+      <legend>Votre profil</legend>
+      <div class="form-group">
+        <label for="register-profile-login">Login*</label>
+        <input id="register-profile-login" name="login" class="form-control" type="text" required data-ng-model="register.profile.login"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-email">Adresse mail*</label>
+        <input id="register-profile-email" name="email" class="form-control" type="email" required data-ng-model="register.profile.email"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-password">Mot de passe*</label>
+        <input id="register-profile-password" name="password" class="form-control" type="password" required data-ng-model="register.profile.password"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-firstname">Prénom*</label>
+        <input id="register-profile-firstname" name="firstname" class="form-control" type="text" required data-ng-model="register.profile.firstName"/>
+      </div>
+      <div class="form-group">
+        <label for="register-profile-lastname">Nom*</label>
+        <input id="register-profile-lastname" name="lastname" class="form-control" type="text" required data-ng-model="register.profile.lastName"/>
+      </div>
+    </fieldset>
+    <div class="btn-group" role="group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</section>
