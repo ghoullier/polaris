@@ -1,16 +1,16 @@
-import {Component} from 'angular2/core';
+import { Component } from 'angular2/core';
 
 
 @Component({
-  selector: 'volunteers-app',
+  selector: 'polaris-app',
   providers: [],
-  templateUrl: 'app/volunteers.html',
+  templateUrl: 'app/polaris.html',
   directives: [],
   pipes: []
 })
-export class VolunteersApp {
+export class PolarisApp {
   defaultMeaning: number = 42;
-  
+
   meaningOfLife(meaning) {
     return `The meaning of life is ${meaning || this.defaultMeaning}`;
   }

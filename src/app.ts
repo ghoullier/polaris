@@ -1,5 +1,5 @@
-import {bootstrap} from 'angular2/platform/browser';
-import {VolunteersApp} from './app/volunteers';
+import { bootstrap } from 'angular2/platform/browser';
+import { PolarisApp as App } from './app/polaris';
 
 
-bootstrap(VolunteersApp);
+bootstrap(PolarisApp);
