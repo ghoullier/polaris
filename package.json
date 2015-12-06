@@ -2,6 +2,19 @@
   "name": "polaris",
   "description": "Volunteers web based application",
   "version": "0.0.0",
+  "author": {
+    "name": "Grégory Houllier",
+    "url": "https://twitter.com/ghoullier"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghoullier/polaris.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ghoullier/polaris/issues"
+  },
+  "homepage": "https://github.com/ghoullier/polaris",
   "private": true,
   "scripts": {
     "build": "ng build",
