@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component, ViewEncapsulation } from 'angular2/core';
 
 
 @Component({
@@ -7,7 +7,8 @@ import { Component } from 'angular2/core';
   styleUrls: ['app/components/login/login.css'],
   providers: [],
   directives: [],
-  pipes: []
+  pipes: [],
+  encapsulation: ViewEncapsulation.None
 })
 export class Login {
 
