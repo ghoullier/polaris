@@ -19,7 +19,8 @@
   "scripts": {
     "build": "ng build",
     "start": "ng serve",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng github-pages:deploy"
   },
   "dependencies": {
     "systemjs": "0.19.4",
