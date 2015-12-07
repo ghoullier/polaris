@@ -2,6 +2,10 @@
 tmp
 dist
 
+# gh-pages generated files
+vendor
+/tsconfig.json
+
 # Ignore log files
 *.log
 
