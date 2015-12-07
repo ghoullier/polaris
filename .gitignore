@@ -2,6 +2,9 @@
 tmp
 dist
 
+# Ignore log files
+*.log
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
