@@ -1,0 +1,11 @@
+{
+  "name": "polaris",
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-ui-router": "~0.2.0",
+    "zetapush-js": "~1.1.9",
+    "angular-strap": "~2.3.6",
+    "ng-file-upload": "~10.1.9"
+  },
+  "devDependencies": {}
+}

@@ -23,10 +23,10 @@ export default function () {
     // Generate templates module
     .pipe(cache({
       filename: 'templates.js',
-      module: 'volunteers.templates',
+      module: 'polaris.templates',
       moduleSystem: 'Browserify',
       standalone: true
     }))
     .pipe(gulp.dest(paths.sources.root))
   ;
-}
+};

@@ -5,7 +5,7 @@ import uglify from 'gulp-uglify';
 import util from 'gulp-util';
 import stream from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
-import files from 'main-bower-files';
+import files from 'main-bower-files'
 
 import * as bundler from './utils/bundler';
 import { onBrowserifyError } from './utils/handlers';

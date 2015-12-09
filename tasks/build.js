@@ -5,7 +5,7 @@ export default (callback) => {
     'clean',
     'config',
     'templates',
-    ['i18n', 'images', 'styles', 'fonts', 'html', 'lint', 'checkstyle', 'scripts'],
+    ['images', 'styles', 'fonts', 'html', 'lint', 'scripts'],
     callback
   );
 };

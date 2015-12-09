@@ -8,7 +8,7 @@ import paths from './paths';
 const entries = paths.sources.entries;
 const optimize = args.optimize;
 
-export function app() {
+function app() {
   const bundler = browserify({
       entries: entries.app,
       debug: !optimize,
@@ -27,3 +27,20 @@ export function app() {
   }
   return bundler;
 }
+
+function vendor() {
+  const bundler = browserify({
+    entries: entries.vendor,
+    insertGlobals: true,
+    debug: !optimize,
+    verbose: true
+  });
+  if (optimize) {
+    bundler.plugin('minifyify', {
+      map: false
+    });
+  }
+  return bundler;
+}
+
+export { app, vendor };

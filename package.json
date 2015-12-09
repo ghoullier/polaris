@@ -1,42 +1,61 @@
 {
   "name": "polaris",
-  "description": "Volunteers web based application",
+  "description": "polaris generated with yeoman-angular-devstack",
   "version": "0.0.0",
-  "author": {
-    "name": "Grégory Houllier",
-    "url": "https://twitter.com/ghoullier"
-  },
-  "contributors": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ghoullier/polaris.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ghoullier/polaris/issues"
-  },
-  "homepage": "https://github.com/ghoullier/polaris",
   "private": true,
   "scripts": {
-    "build": "ng build",
-    "start": "ng serve",
-    "test": "ng test",
-    "deploy": "ng github-pages:deploy"
-  },
-  "dependencies": {
-    "systemjs": "0.19.4",
-    "angular2": "2.0.0-alpha.48"
+    "postinstall": "bower install",
+    "postupdate": "bower update",
+
+    "prestart": "npm install",
+    "start": "gulp develop --env=dev",
+
+    "prebuild": "npm install",
+    "build": "gulp build --env=prod --optimize",
+
+    "prearchive": "npm run build",
+    "archive": "gulp archive"
   },
   "devDependencies": {
-    "angular-cli": "0.0.*",
-    "angular-cli-github-pages": "^0.2.0",
-    "ember-cli-inject-live-reload": "^1.3.0",
-    "jasmine-core": "^2.3.4",
-    "karma": "^0.13.15",
-    "karma-chrome-launcher": "^0.2.1",
-    "karma-jasmine": "^0.3.6"
+    "babel-core": "^6.3.15",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "bower": "^1.7.0",
+    "browser-sync": "^2.10.0",
+    "browserify": "^12.0.1",
+    "browserify-ngannotate": "^2.0.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-gzip": "^1.2.0",
+    "gulp-htmlmin": "^1.2.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tar": "^1.7.0",
+    "gulp-template": "^3.1.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.8.0",
+    "main-bower-files": "^2.9.0",
+    "merge": "^1.2.0",
+    "minifyify": "^7.1.0",
+    "minimist": "^1.2.0",
+    "pretty-hrtime": "^1.0.1",
+    "run-sequence": "^1.1.5",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "^4.2.0"
   },
   "license": "MIT"
 }

@@ -2,18 +2,14 @@ import fs from 'fs';
 
 import paths from './paths';
 import args from './cli-args';
+import string from './string';
 
-import * as string from './string';
-
-const { env = ['dev'] } = args;
-let target = [].concat(env);
-target = target[target.length - 1];
-
+const env = args.env || 'dev';
 const configPath = string.compile(paths.sources.config, {
-  env: target
+  env: env
 });
 
-export default function () {
+export default function() {
   var config = fs.readFileSync(configPath, 'utf8');
   return JSON.parse(config);
-}
+};

@@ -16,7 +16,7 @@ Livereload use [BrowserSync](http://www.browsersync.io)
 
 ```console
 # Shortcut of 'gulp develop --env=dev'
-npm run start
+npm start
 ```
 
 ### Production
@@ -189,4 +189,4 @@ export default angular
 bower install angular-bootstrap --save --force-latest
 ```
 
-Vendor is automatically added via main-bower-files module
+Dependency automaticly added in **vendor.js** via main-bower-files

@@ -27,7 +27,7 @@ export default () => {
       outputStyle: optimize ? 'compressed' : 'expanded'
     }))
     // Optionally add autoprefixer
-    .pipe(optimize ? autoprefixer('last 2 versions') : util.noop())
+    .pipe(optimize ? autoprefixer('last 2 versions', '> 1%') : util.noop())
     // Concat files
     .pipe(concat('main.css'))
     // Generate sourcemaps

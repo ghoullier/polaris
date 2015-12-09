@@ -8,7 +8,7 @@ export default () => {
   browserSync({
     server: {
       baseDir: paths.dist.root,
-      middleware: [PushStateMiddleware]
+      middleware: pushStateMiddleware
     }
   });
 };
@@ -16,7 +16,7 @@ export default () => {
 /**
  * Middelware that support pushState
  */
-function PushStateMiddleware(request, response, next) {
+function pushStateMiddleware(request, response, next) {
   var pathname = paths.dist.root + url.parse(request.url).pathname;
   fs.exists(pathname, function onExists(exists) {
     if (!exists) {

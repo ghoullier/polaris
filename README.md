@@ -1,4 +1,4 @@
-# volunteers v0.0.0
+# polaris v0.0.0
 
 ## Documentation
 

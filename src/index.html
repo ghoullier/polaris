@@ -1,27 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <title>WIP Polaris</title>
-  <base href=".">
-  <script src="vendor/systemjs/dist/system.src.js"></script>
-  <script src="vendor/angular2/bundles/angular2.dev.js"></script>
-  <script src="vendor/angular2/bundles/router.dev.js"></script>
-  <script src="vendor/angular2/bundles/http.dev.js"></script>
-  {{content-for 'head'}}
-  <script>
-    System.config({
-      packages: {
-        app: {
-          format: 'register',
-          defaultExtension: 'js'
-        }
-      }
-    });
-    System.import('app.js').then(null, console.error.bind(console));
-  </script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-</head>
-<body>
-  <polaris-app>Loading...</polaris-app>
-</body>
+  <head>
+    <base href="<%= BASE_HREF %>" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polaris</title>
+    <link rel="stylesheet" href="<%= BASE_HREF %>css/main.css?v=<%= APP_VERSION %>" />
+  </head>
+  <body>
+    <div class="Wrapper">
+      <nav class="Nav">
+        <a data-ui-sref="login()" class="Nav__Link">Login</a>
+        <a data-ui-sref="profile()" class="Nav__Link">Profile</a>
+        <a data-ui-sref="register()" class="Nav__Link">Register</a>
+      </nav>
+      <main data-ui-view></main>
+    </div>
+    <script src="<%= BASE_HREF %>js/vendor.js?v=<%= APP_VERSION %>"></script>
+    <script src="<%= BASE_HREF %>js/app.js?v=<%= APP_VERSION %>"></script>
+    <script src="<%= BASE_HREF %>js/config.js?v=<%= APP_VERSION %>"></script>
+  </body>
 </html>

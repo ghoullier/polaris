@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import eslint from 'gulp-eslint';
+import jshint from 'gulp-jshint';
 import plumber from 'gulp-plumber';
 
 import paths from './utils/paths';
@@ -11,7 +11,7 @@ export default () => {
     .pipe(plumber({
       errorHandler: onGenericError
     }))
-    .pipe(eslint())
-    .pipe(eslint.format())
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
   ;
 };

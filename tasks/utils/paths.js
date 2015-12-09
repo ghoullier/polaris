@@ -9,19 +9,17 @@ export default {
       vendor: './src/vendor.js',
       html: './src/index.html'
     },
-    scripts: './src/{shared,components}/**/*.js',
-    styles: './src/{shared,components}/**/*.scss',
-    i18n: './src/assets/i18n/*.json',
-    images: './src/assets/images/**/*.{png,svg,jpg}',
-    fonts: './src/assets/fonts/**',
-    partials: './src/{shared,components}/**/*.html'
+    scripts: './src/{components,shared}/**/*.js',
+    styles: './src/{components,shared}/**/styles/main.scss',
+    images: './assets/images/**/*.png',
+    fonts: './assets/fonts/**',
+    partials: './src/{components,shared}/**/*.html'
   },
   dist: {
     root: './dist/',
     scripts: './dist/js/',
     styles: './dist/css/',
     images: './dist/css/images/',
-    fonts: './dist/fonts/',
-    i18n: './dist/i18n/'
+    fonts: './dist/fonts/'
   }
 };

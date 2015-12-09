@@ -1,8 +1,8 @@
-import gulp from 'gulp';
-import template from 'gulp-template';
+ import gulp from 'gulp';
+ import template from 'gulp-template';
 
-import config from './utils/config';
-import paths from './utils/paths';
+ import config from './utils/config';
+ import paths from './utils/paths';
 
 export default () => {
   return gulp

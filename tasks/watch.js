@@ -4,8 +4,7 @@ import sequence from 'run-sequence';
 
 import args from './utils/cli-args';
 import paths from './utils/paths';
-
-import * as string from './utils/string';
+import string from './utils/string';
 import * as watcher from './utils/watcher';
 
 const reload = browserSync.reload;
@@ -17,6 +16,7 @@ const config = string.compile(paths.sources.config, {
   env: env
 });
 
+
 export function task(callback) {
   sequence(
     ['watch.assets', 'watch.app'],
@@ -27,8 +27,7 @@ export function task(callback) {
 export function assets() {
   // Watch all application scripts
   gulp.watch([sources.scripts], [
-    'lint',
-    'checkstyle'
+    'lint'
   ]);
   // Watch styles
   gulp.watch([sources.styles], [
@@ -46,15 +45,12 @@ export function assets() {
   gulp.watch([sources.images], [
     'images'
   ]);
-  // Watch i18n
-  gulp.watch([sources.i18n], [
-    'i18n'
-  ]);
   // Watch config
   gulp.watch([config], [
     'config'
   ]);
-  gulp.watch(['./bower.json'], [
+  // Watch bower
+  gulp.watch([sources.bower], [
     'scripts.vendor'
   ]);
   // Watch for live reload
@@ -64,9 +60,9 @@ export function assets() {
     dist.images + '*.*',
     dist.fonts + '*.*'
   ]).on('change', reload);
-}
+};
 
 export function app() {
   // Watch app
   return watcher.app();
-}
+};
