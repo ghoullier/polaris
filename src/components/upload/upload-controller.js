@@ -21,7 +21,7 @@ export default class UploadController {
 
     fs.on('newUploadUrl', ({ channel, data }) => {
       console.log('on', 'fs', 'newUploadUrl', channel, data)
-debugger
+
       Upload.upload({
             url: data.url,
             data: {
@@ -35,7 +35,7 @@ debugger
         }, (resp) => {
             console.log('Error status: ' + resp.status)
         }, (evt) => {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
+            const progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name)
         })
 /*

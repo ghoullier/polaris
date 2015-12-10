@@ -9,7 +9,7 @@ export default class AuthentStrategy {
     return localStorage.getItem(ZP_TOKEN)
   }
   getRessourceId() {
-    var id = localStorage.getItem(ZP_RESSOURCE_ID)
+    let id = localStorage.getItem(ZP_RESSOURCE_ID)
     if (null === id) {
       id = zp.makeResourceId()
       localStorage.setItem(ZP_RESSOURCE_ID, id)

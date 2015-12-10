@@ -23,7 +23,7 @@ export class AuthentStrategy {
     return localStorage.getItem(ZP_TOKEN)
   }
   getRessourceId() {
-    var id = localStorage.getItem(ZP_RESSOURCE_ID)
+    let id = localStorage.getItem(ZP_RESSOURCE_ID)
     if (null === id) {
       id = zp.makeResourceId()
       localStorage.setItem(ZP_RESSOURCE_ID, id)
@@ -40,23 +40,22 @@ export class AuthentStrategy {
 export const initialize = (callback) => {
   // Register Handle callback
   let bootstraped = false
-  zp.onHandshake(() => {
-    console.log('on', 'zp', 'handshake')
+  const strategy = new AuthentStrategy()
+  const weak = new WeakAuthent()
+  // ZetaPush Event Handlers
+  zp.onHandshake((data) => {
+    console.log('on', 'zp', 'handshake', data)
     if (!bootstraped) {
       callback()
     }
     bootstraped = true
   })
-  zp.onConnected(() => {
-    console.log('on', 'zp', 'connected')
+  zp.onConnected((data) => {
+    console.log('on', 'zp', 'connected', data)
   })
-
   // Initialization of ZetaPush connection with a log level parameter
   zp.init(ZP_BUSINESS_ID, ZP_DEBUG_LEVEL)
-  const strategy = new AuthentStrategy()
-  const weak = new WeakAuthent()
-  //const simple = new SimpleAuthent()
-
+  // Auto connection
   if (strategy.isWeakAuthent()) {
     strategy.connect(weak)
   }

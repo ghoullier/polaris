@@ -1,5 +1,5 @@
-var ZP_AUTHENTIFICATION_DEPLOYMENT_ID = 'DBdP'
-window.simple = new zp.authent.Simple(ZP_AUTHENTIFICATION_DEPLOYMENT_ID)
+const ZP_AUTHENTIFICATION_DEPLOYMENT_ID = 'DBdP'
+const simple = new zp.authent.Simple(ZP_AUTHENTIFICATION_DEPLOYMENT_ID)
 
 zp.onConnected(function onConnected(message) {
   console.log('onConnected', message)

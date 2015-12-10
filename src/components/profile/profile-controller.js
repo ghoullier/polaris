@@ -1,4 +1,4 @@
-var ZP_GDA_DEPLOYMENT_ID = '2rCg'
+const ZP_GDA_DEPLOYMENT_ID = '2rCg'
 const gda = new zp.service.Generic(ZP_GDA_DEPLOYMENT_ID)
 
 export default class ProfileController {
