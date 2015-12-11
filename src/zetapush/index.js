@@ -42,6 +42,7 @@ export const initialize = (callback) => {
   let bootstraped = false
   const strategy = new AuthentStrategy()
   const weak = new WeakAuthent()
+  const simple = new SimpleAuthent()
   // ZetaPush Event Handlers
   zp.onHandshake((data) => {
     console.log('on', 'zp', 'handshake', data)
@@ -59,4 +60,6 @@ export const initialize = (callback) => {
   if (strategy.isWeakAuthent()) {
     strategy.connect(weak)
   }
+  window.simple = simple
+  window.weak = weak
 }

@@ -4,13 +4,12 @@
       <legend>Upload</legend>
       <div class="form-group">
         <label for="register-profile-avatar">Avatar</label>
-        <div class="button" ngf-select="upload.transfer($files)" ng-model="profile.model.avatar" name="file" ngf-pattern="'image/*'"
-   accept="image/*" ngf-max-size="20MB" ngf-min-height="100"
-   ngf-resize="{width: 100, height: 100}">Select</div>
+        <div class="button" ngf-select="upload.transfer($files)" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB">Select</div>
       </div>
     </fieldset>
     <div class="btn-group" role="group">
       <button type="submit" class="btn btn-success">Upload</button>
+      <button type="button" ng-click="upload.ls()" class="btn btn-success">List</button>
     </div>
   </form>
 </section>

@@ -5,7 +5,7 @@ import upload from './upload'
 
 import router from './router'
 
-const THIRD_PART_MODULES = ['mgcrea.ngStrap', 'ngFileUpload']
+const THIRD_PART_MODULES = ['ui.router', 'mgcrea.ngStrap', 'ngFileUpload']
 
 export default angular
   .module('polaris.components', [
