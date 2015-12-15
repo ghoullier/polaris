@@ -12,8 +12,8 @@ export default class LoginController {
     this.$log = $log
 
     this.user = {
-      login: '1447327434788',
-      password: '1447327434788'
+      login: '1449753112254',
+      password: '1449753112254'
     }
 
     const handler = zp.on('/meta/disconnect', () => {
