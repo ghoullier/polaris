@@ -38,6 +38,9 @@ export class AuthentStrategy {
 }
 // ZetaPush initialize
 export const initialize = (callback) => {
+  // Initialization of ZetaPush connection with a log level parameter
+  // ZetaPush MUST be initialized before service creation
+  zp.init(ZP_BUSINESS_ID, ZP_DEBUG_LEVEL)
   // Register Handle callback
   let bootstraped = false
   const strategy = new AuthentStrategy()
@@ -54,8 +57,6 @@ export const initialize = (callback) => {
   zp.onConnected((data) => {
     console.log('on', 'zp', 'connected', data)
   })
-  // Initialization of ZetaPush connection with a log level parameter
-  zp.init(ZP_BUSINESS_ID, ZP_DEBUG_LEVEL)
   // Auto connection
   if (strategy.isWeakAuthent()) {
     strategy.connect(weak)
