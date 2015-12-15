@@ -38,8 +38,8 @@ export default class LoginController {
     console.log('on', 'weak', 'disonnected')
 
     //setTimeout(() => {
-      const connectHandler = zp.on('/meta/connected', () => {
-        console.log('on', 'connected')
+      const connectHandler = zp.on('/meta/connected', (...args) => {
+        console.log('on', 'connected', args)
 
         zp.off(connectHandler)
         groups.send('groups', {})

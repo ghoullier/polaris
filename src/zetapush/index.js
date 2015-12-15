@@ -22,6 +22,9 @@ export class AuthentStrategy {
   static isWeakAuthent() {
     return null === this.getToken()
   }
+  static setToken(token) {
+    return localStorage.setItem(TOKEN, token)
+  }
   static getToken() {
     return localStorage.getItem(TOKEN)
   }
@@ -58,10 +61,14 @@ export const initialize = (callback) => {
   })
   zp.onConnected((data) => {
     console.log('on', 'zp', 'connected', data)
+
+    AuthentStrategy.setToken(simple.getToken())
   })
   // Auto connection
   if (AuthentStrategy.isWeakAuthent()) {
     AuthentStrategy.connect(weak)
+  } else {
+    AuthentStrategy.connect(simple)
   }
   window.simple = simple
   window.weak = weak
