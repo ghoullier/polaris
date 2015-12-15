@@ -1,15 +1,8 @@
-const ZP_AUTHENTIFICATION_DEPLOYMENT_ID = 'DBdP'
-const simple = new zp.authent.Simple(ZP_AUTHENTIFICATION_DEPLOYMENT_ID)
-
-zp.onConnected(function onConnected(message) {
-  console.log('onConnected', message)
-})
-
 export default class LoginController {
-  constructor($log) {
+  constructor($log, ZetaPush) {
     'ngInject'
 
-    this.$log = $log
+    this.simple = new ZetaPush.SimpleAuthent()
 
     this.user = {
       login: '1449753112254',
@@ -30,7 +23,7 @@ export default class LoginController {
     console.log('on', 'weak', 'disonnected')
 
     setTimeout(() => {
-      zp.connect(simple.getConnectionData(this.user.login, this.user.password, null))
+      zp.connect(this.simple.getConnectionData(this.user.login, this.user.password, null))
     }, 100)
   }
 }

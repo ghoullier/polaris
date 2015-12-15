@@ -1,5 +1,5 @@
-const ZP_MACRO_DEPLOYMENT_ID = 'YYXp'
-const macro = new zp.service.Generic(ZP_MACRO_DEPLOYMENT_ID)
+const MACRO_DEPLOYMENT_ID = 'RXhZ'
+const macro = new zp.service.Generic(MACRO_DEPLOYMENT_ID)
 
 export default class PlaygroundController {
   constructor() {

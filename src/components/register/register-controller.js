@@ -1,5 +1,5 @@
-const ZP_MACRO_DEPLOYMENT_ID = 'hgkJ'
-const macro = new zp.service.Generic(ZP_MACRO_DEPLOYMENT_ID)
+const MACRO_DEPLOYMENT_ID = 'RXhZ'
+const macro = new zp.service.Generic(MACRO_DEPLOYMENT_ID)
 
 export default class RegisterController {
   constructor() {
@@ -33,7 +33,7 @@ export default class RegisterController {
     console.log('RegisterController::submit')
 
     macro.send('call', {
-      name: 'registerUser',
+      name: 'registerGrantedUser',
       parameters: this.profile
     })
   }

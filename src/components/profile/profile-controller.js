@@ -1,5 +1,5 @@
-const ZP_GDA_DEPLOYMENT_ID = '2rCg'
-const gda = new zp.service.Generic(ZP_GDA_DEPLOYMENT_ID)
+const GDA_DEPLOYMENT_ID = 'zFmP'
+const gda = new zp.service.Generic(GDA_DEPLOYMENT_ID)
 
 export default class ProfileController {
   constructor($scope) {

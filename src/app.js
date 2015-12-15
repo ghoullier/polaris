@@ -3,7 +3,7 @@ import 'babel-polyfill'
 import templates from './templates'
 import shared from './shared'
 import components from './components'
-import * as zetapush from './zetapush'
+import * as ZetaPush from './zetapush'
 
 const app = angular
   .module('polaris', [
@@ -12,8 +12,9 @@ const app = angular
     components.name
   ])
 
+shared.constant('ZetaPush', ZetaPush)
 
-zetapush.initialize(() => {
+ZetaPush.initialize(() => {
   angular.bootstrap(document.documentElement, [
     app.name
   ])

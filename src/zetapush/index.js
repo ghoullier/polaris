@@ -1,49 +1,51 @@
-export const ZP_BUSINESS_ID = '2uMaPJfp'
-export const ZP_DEBUG_LEVEL = 'info'
-export const ZP_RESSOURCE_ID = 'ZP-RESSOURCE-ID'
-export const ZP_TOKEN = 'ZP-TOKEN'
-export const ZP_SIMPLE_AUTHENTIFICATION_ID = 'DBdP'
-export const ZP_WEAK_AUTHENTIFICATION_ID = 'IXG-'
+const API_URL = '//vm-zbo:8080/zbo/pub/business/'
+const DEBUG_LEVEL = 'info'
+const RESSOURCE_ID = 'ZP-RESSOURCE-ID'
+const TOKEN = 'ZP-TOKEN'
+
+export const BUSINESS_ID = 'wEW9Tneu'
+export const SIMPLE_AUTHENTIFICATION_BUSINESS_ID = 'ukQT'
+export const WEAK_AUTHENTIFICATION_BUSINESS_ID = 'oKd4'
+export const FILESYSTEM_BUSINESS_ID = 'tmoO'
 
 export class WeakAuthent extends zp.authent.Weak {
   constructor() {
-    super(ZP_WEAK_AUTHENTIFICATION_ID)
+    super(WEAK_AUTHENTIFICATION_BUSINESS_ID)
   }
 }
 export default class SimpleAuthent extends zp.authent.Simple {
   constructor() {
-    super(ZP_SIMPLE_AUTHENTIFICATION_ID)
+    super(SIMPLE_AUTHENTIFICATION_BUSINESS_ID)
   }
 }
 export class AuthentStrategy {
-  isWeakAuthent() {
+  static isWeakAuthent() {
     return null === this.getToken()
   }
-  getToken() {
-    return localStorage.getItem(ZP_TOKEN)
+  static getToken() {
+    return localStorage.getItem(TOKEN)
   }
-  getRessourceId() {
-    let id = localStorage.getItem(ZP_RESSOURCE_ID)
+  static getRessourceId() {
+    let id = localStorage.getItem(RESSOURCE_ID)
     if (null === id) {
       id = zp.makeResourceId()
-      localStorage.setItem(ZP_RESSOURCE_ID, id)
+      localStorage.setItem(RESSOURCE_ID, id)
     }
     return id
   }
-  connect(service) {
+  static connect(service) {
     const token = this.getToken()
     const ressourceId = this.getRessourceId()
-    zp.connect(service.getConnectionData(token, ressourceId))
+    zp.connect(service.getConnectionData(token, ressourceId), API_URL)
   }
 }
 // ZetaPush initialize
 export const initialize = (callback) => {
   // Initialization of ZetaPush connection with a log level parameter
   // ZetaPush MUST be initialized before service creation
-  zp.init(ZP_BUSINESS_ID, ZP_DEBUG_LEVEL)
+  zp.init(BUSINESS_ID, DEBUG_LEVEL)
   // Register Handle callback
   let bootstraped = false
-  const strategy = new AuthentStrategy()
   const weak = new WeakAuthent()
   const simple = new SimpleAuthent()
   // ZetaPush Event Handlers
@@ -58,8 +60,8 @@ export const initialize = (callback) => {
     console.log('on', 'zp', 'connected', data)
   })
   // Auto connection
-  if (strategy.isWeakAuthent()) {
-    strategy.connect(weak)
+  if (AuthentStrategy.isWeakAuthent()) {
+    AuthentStrategy.connect(weak)
   }
   window.simple = simple
   window.weak = weak

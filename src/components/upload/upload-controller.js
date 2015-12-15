@@ -1,5 +1,5 @@
-const ZP_FS_DEPLOYMENT_ID = 'YYXp'
-const fs = new zp.service.Generic(ZP_FS_DEPLOYMENT_ID)
+const FS_DEPLOYMENT_ID = 'YYXp'
+const fs = new zp.service.Generic(FS_DEPLOYMENT_ID)
 
 export default class UploadController {
   constructor($http, Upload) {
