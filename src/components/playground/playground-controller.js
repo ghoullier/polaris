@@ -16,26 +16,26 @@ export default class PlaygroundController {
     }
 
     macro.onError((message) => {
-      console.log('on', 'macro', 'error', message);
-    });
+      console.log('on', 'macro', 'error', message)
+    })
     macro.on('call', (message) => {
-      console.log('on', 'macro', 'call', message);
-    });
+      console.log('on', 'macro', 'call', message)
+    })
     macro.on('registered', (message) => {
-      console.log('on', 'macro', 'registered', message);
+      console.log('on', 'macro', 'registered', message)
       Object.keys(message.data.errors).forEach(function onEach(property) {
-        console.error(message.data.errors[property]);
-      });
-    });
+        console.error(message.data.errors[property])
+      })
+    })
   }
   submit($event) {
-    $event.preventDefault();
+    $event.preventDefault()
 
-    console.log('PlaygroundController::submit');
+    console.log('PlaygroundController::submit')
 
     macro.send('call', {
       name: 'test_makeUser',
       parameters: this.profile
-    });
+    })
   }
 }
