@@ -21,7 +21,7 @@ export default angular
   .run((ZetaPush) => {
     'ngInject'
 
-    const { AuthentStrategy } = ZetaPush;
+    const { AuthentStrategy } = ZetaPush
 
     console.log('AuthentStrategy.isWeakAuthent()', AuthentStrategy.isWeakAuthent())
 

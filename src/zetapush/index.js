@@ -1,8 +1,8 @@
-const API_URL = '//vm-zbo:8080/zbo/pub/business/'
 const DEBUG_LEVEL = 'info'
 const RESSOURCE_ID = 'ZP-RESSOURCE-ID'
 const TOKEN = 'ZP-TOKEN'
 
+export const API_URL = '//vm-zbo:8080/zbo/pub/business/'
 export const BUSINESS_ID = 'wEW9Tneu'
 export const SIMPLE_AUTHENTIFICATION_BUSINESS_ID = 'ukQT'
 export const WEAK_AUTHENTIFICATION_BUSINESS_ID = 'oKd4'
@@ -13,7 +13,7 @@ export class WeakAuthent extends zp.authent.Weak {
     super(WEAK_AUTHENTIFICATION_BUSINESS_ID)
   }
 }
-export default class SimpleAuthent extends zp.authent.Simple {
+export class SimpleAuthent extends zp.authent.Simple {
   constructor() {
     super(SIMPLE_AUTHENTIFICATION_BUSINESS_ID)
   }
