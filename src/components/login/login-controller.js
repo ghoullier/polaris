@@ -29,6 +29,8 @@ export default class LoginController {
   connect() {
     console.log('on', 'weak', 'disonnected')
 
-    zp.connect(simple.getConnectionData(this.user.login, this.user.password, null))
+    setTimeout(() => {
+      zp.connect(simple.getConnectionData(this.user.login, this.user.password, null))
+    }, 100)
   }
 }
