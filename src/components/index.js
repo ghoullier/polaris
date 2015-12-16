@@ -2,6 +2,7 @@ import login from './login'
 import register from './register'
 import profile from './profile'
 import upload from './upload'
+import playground from './playground'
 
 import router from './router'
 
@@ -14,7 +15,8 @@ export default angular
     login.name,
     register.name,
     profile.name,
-    upload.name
+    upload.name,
+    playground.name
   ])
 
   .config(router)

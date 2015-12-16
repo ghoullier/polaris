@@ -11,8 +11,7 @@ const app = angular
     shared.name,
     components.name
   ])
-
-shared.constant('ZetaPush', ZetaPush)
+  .constant('ZetaPush', ZetaPush)
 
 ZetaPush.initialize(() => {
   angular.bootstrap(document.documentElement, [

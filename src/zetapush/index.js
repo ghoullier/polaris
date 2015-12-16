@@ -22,6 +22,9 @@ export class AuthentStrategy {
   static isWeakAuthent() {
     return null === this.getToken()
   }
+  static clearToken() {
+    return localStorage.removeItem(TOKEN)
+  }
   static setToken(token) {
     return localStorage.setItem(TOKEN, token)
   }
@@ -37,6 +40,7 @@ export class AuthentStrategy {
     return id
   }
   static connect(service) {
+    console.log('AuthentStrategy::connect', service)
     const token = this.getToken()
     const ressourceId = this.getRessourceId()
     zp.connect(service.getConnectionData(token, ressourceId), API_URL)
@@ -52,8 +56,15 @@ export const initialize = (callback) => {
   const weak = new WeakAuthent()
   const simple = new SimpleAuthent()
   // ZetaPush Event Handlers
-  zp.onHandshake((data) => {
-    console.log('on', 'zp', 'handshake', data)
+  zp.onHandshake(({ ext: { authentication } }) => {
+    console.log('on', 'zp', 'handshake', authentication)
+
+    if ('undefined' === typeof authentication.publicToken) {
+      AuthentStrategy.setToken(authentication.token)
+    } else {
+      AuthentStrategy.clearToken()
+    }
+
     if (!bootstraped) {
       callback()
     }
@@ -61,8 +72,6 @@ export const initialize = (callback) => {
   })
   zp.onConnected((data) => {
     console.log('on', 'zp', 'connected', data)
-
-    AuthentStrategy.setToken(simple.getToken())
   })
   // Auto connection
   if (AuthentStrategy.isWeakAuthent()) {

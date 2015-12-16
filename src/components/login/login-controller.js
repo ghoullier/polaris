@@ -9,8 +9,8 @@ export default class LoginController {
     this.simple = new ZetaPush.SimpleAuthent()
 
     this.user = {
-      login: '1450187643735',
-      password: '1450187643735'
+      login: '1450197392534',
+      password: '1450197392534'
     }
 
     groups.onError((message) => {
@@ -20,7 +20,12 @@ export default class LoginController {
     groups.on('groups', ({ channel, data }) => {
       console.log('on', 'groups', 'groups', channel, data)
     })
-
+    groups.on('groupUsers', ({ channel, data }) => {
+      console.log('on', 'groups', 'groupUsers', channel, data)
+    })
+    groups.on('listGrants', ({ channel, data }) => {
+      console.log('on', 'groups', 'listGrants', channel, data)
+    })
   }
   login($event) {
     $event.preventDefault()
@@ -43,6 +48,12 @@ export default class LoginController {
 
         zp.off(connectHandler)
         groups.send('groups', {})
+        groups.send('groupUsers', {
+          group: 'GroupAccessToMyGda'
+        })
+        groups.send('listGrants', {
+          group: 'GroupAccessToMyGda'
+        })
       })
 
       zp.connect(this.simple.getConnectionData(this.user.login, this.user.password, null), this.ZetaPush.API_URL)
