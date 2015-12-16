@@ -6,7 +6,7 @@ export default ($stateProvider) => {
     .state('playground', {
       url: '/playground',
       templateUrl: 'components/playground/partials/playground.html',
-      controller: 'Playground as vm'
+      controller: 'Playground as playground'
     })
-  
+
 }

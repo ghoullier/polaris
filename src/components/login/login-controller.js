@@ -9,8 +9,8 @@ export default class LoginController {
     this.simple = new ZetaPush.SimpleAuthent()
 
     this.user = {
-      login: '1450197392534',
-      password: '1450197392534'
+      login: 'admin-1450274967070',
+      password: '1450274967070'
     }
 
     groups.onError((message) => {
