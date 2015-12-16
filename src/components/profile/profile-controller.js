@@ -22,21 +22,21 @@ export default class ProfileController {
 
     this.model = {}
 
-    gda.onError(({ data, channel }) => {
-      console.error('on', 'gda', 'error', data)
+    gda.onError(({ channel, data }) => {
+      console.error('on', 'gda', 'error', channel, data)
     })
-    gda.on('get', ({ data, channel }) => {
-      console.log('on', 'gda', 'get', data.result)
+    gda.on('get', ({ channel, data }) => {
+      console.log('on', 'gda', 'get', channel, data.result)
 
       this.model = data.result.Profile
 
       $scope.$digest()
     })
-    gda.on('put', ({ data, channel }) => {
-      console.log('on', 'gda', 'put', data)
+    gda.on('put', ({ channel, data }) => {
+      console.log('on', 'gda', 'put', channel, data)
     })
-    gda.on('list', ({ data, channel }) => {
-      console.log('on', 'gda', 'list', data.result.content)
+    gda.on('list', ({ channel, data }) => {
+      console.log('on', 'gda', 'list', channel, data.result.content)
     })
   }
   submit($event) {

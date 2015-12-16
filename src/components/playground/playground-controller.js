@@ -35,7 +35,15 @@ export default class PlaygroundController {
     })
 
     gda.on('list', ({ data, channel }) => {
-      console.log('on', 'gda', 'list', data.result.content)
+      console.log('on', 'gda', 'list', data.result.content, channel)
+    })
+
+    macro.on('userDetails', ({ channel, data }) => {
+      console.log('on', 'macro', 'userDetails', channel, data)
+    })
+
+    macro.on('hello', ({ channel, data }) => {
+      console.log('on', 'macro', 'hello', channel, data)
     })
   }
   submit($event) {
@@ -50,29 +58,38 @@ export default class PlaygroundController {
       parameters: {}
     })
 */
-/*
+  }
+  register() {
     macro.send('call', {
-      name: 'registerNewUser',
+      name: 'registerUser',
       parameters: {
         login: `${random}`,
         password: `${random}`
       }
     })
     macro.send('call', {
-      name: 'registerNewAdmin',
+      name: 'registerAdmin',
       parameters: {
         login: `admin-${random}`,
         password: `${random}`
       }
     })
-*/
-
+  }
+  listUsers() {
     gda.send('list', {
       table: 'Users',
       columns: [{
         column: 'Details'
       }],
       owner: 'global' // UserId de la personne dont on souhaite voir les données
+    })
+  }
+  getUserDetailsAsAdmin(userId = 'vWq9Mal_W6sHblG6rPB1zQ') {
+    macro.send('call', {
+      name: 'getUserDetailsAsAdmin',
+      parameters: {
+        userId
+      }
     })
   }
 }

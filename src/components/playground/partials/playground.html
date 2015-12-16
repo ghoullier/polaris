@@ -2,5 +2,8 @@
 <form ng-submit="playground.submit($event)">
   <div class="btn-group" role="group">
     <button type="submit" class="btn btn-success">Play</button>
+    <button type="button" class="btn btn-primary" ng-click="playground.register()">register</button>
+    <button type="button" class="btn btn-primary" ng-click="playground.listUsers()">listUsers</button>
+    <button type="button" class="btn btn-primary" ng-click="playground.getUserDetailsAsAdmin()">getUserDetailsAsAdmin</button>
   </div>
 </form>

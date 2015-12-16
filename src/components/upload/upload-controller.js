@@ -2,7 +2,7 @@ const FS_DEPLOYMENT_ID = 'YYXp'
 const fs = new zp.service.Generic(FS_DEPLOYMENT_ID)
 
 export default class UploadController {
-  constructor($http, Upload) {
+  constructor($http) {
     'ngInject'
 
     console.log(fs)
@@ -50,7 +50,7 @@ export default class UploadController {
     })
   }
   submit($event) {
-    $event.preventDefault(),
+    $event.preventDefault()
 
     console.log('UploadController::submit', fs)
 
