@@ -1,0 +1,101 @@
+// Initialize
+
+const GLOBAL_ID = 'global';
+const GLOBAL_ADMINS_GROUP_ID = 'AdminsGroup';
+const GLOBAL_USERS_GROUP_ID = 'UsersGroup';
+const GLOBAL_GDA_TABLE_ADMINS = 'Admins';
+const GLOBAL_GDA_TABLE_USERS = 'Users';
+const GLOBAL_GDA_COLUMN_DETAIL = 'Details';
+
+const ERROR_MISSING_MANDATORY_INPUT = 'ERROR_MISSING_MANDATORY_INPUT';
+
+macroscript initialize {
+	var adminsGroup = sudo GLOBAL_ID createGlobalAdminsGroup();
+	var usersGroup = sudo GLOBAL_ID createGlobalUsersGroup();
+} return {
+	groups: [adminsGroup, usersGroup]
+} on channel 'initialized'
+
+macroscript registerNewAdmin {
+	assert (__parameters.login ?? || __parameters.password ??) ERROR_MISSING_MANDATORY_INPUT;
+
+	var account = sudo GLOBAL_ID createAccount({
+		login: __parameters.login,
+		password: __parameters.password,
+		group: GLOBAL_ADMINS_GROUP_ID,
+		table: GLOBAL_GDA_TABLE_ADMINS
+	});
+} return {
+	user: account.result.user
+} on channel 'registered'
+
+macroscript registerNewUser {
+	assert (__parameters.login ?? || __parameters.password ??) ERROR_MISSING_MANDATORY_INPUT;
+
+	var account = sudo GLOBAL_ID createAccount({
+		login: __parameters.login,
+		password: __parameters.password,
+		group: GLOBAL_USERS_GROUP_ID,
+		table: GLOBAL_GDA_TABLE_USERS
+	});
+} return {
+	user: account.result.user
+} on channel 'registered'
+
+/**
+ * Création du groupe des admins
+ * Autorisation des utilisateurs membre du groupe admin à effectuer des actions sur la Table Users de la GDA de l'utilisateur Global
+ */
+macroscript createGlobalAdminsGroup {
+	var group = groups(GROUP_ID).createGroup({
+		group: GLOBAL_ADMINS_GROUP_ID,
+		owner: GLOBAL_ID,
+		groupName: "Global Admins Group"
+	});
+	var ressourceId = GDA_ID + ":" + GLOBAL_ID + ":" + GLOBAL_GDA_TABLE_USERS;
+	var grant = groups(GROUP_ID).grant({
+		action: '*',
+		owner: GLOBAL_ID,
+		group: GLOBAL_ADMINS_GROUP_ID,
+		resource: ressourceId
+	});
+} return {
+	group: group,
+	grant: grant
+}
+
+/**
+ * Création du groupe des users
+ */
+macroscript createGlobalUsersGroup {
+	var group = groups(GROUP_ID).createGroup({
+		group: GLOBAL_USERS_GROUP_ID,
+		owner: GLOBAL_ID,
+		groupName: "Global Users Group"
+	});
+} return {
+	group: group
+}
+
+/**
+ * Création d'un compte et ajout au group donné
+ */
+macroscript createAccount {
+	var user = simple(SIMPLE_AUTHENTIFICATION_ID).createUser({
+		login: __parameters.login,
+		password: __parameters.password
+	});
+	groups(GROUP_ID).addUser({
+		group: __parameters.group,
+		owner: GLOBAL_ID,
+		user: user.zetapushKey
+	});
+	gda(GDA_ID).put({
+		table: __parameters.table,
+		column: GLOBAL_GDA_COLUMN_DETAIL,
+		key: user.zetapushKey,
+		data: user
+	});
+} return {
+	user: user
+}
