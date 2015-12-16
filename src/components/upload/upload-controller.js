@@ -37,15 +37,15 @@ export default class UploadController {
           'Content-Type': that.file.type
         }
       })
-      .then(function(...args) {
-          // Send a validation to ZetaPush server
-          // You can provide metadata and tags if needed
-          console.log('succes', args)
-          fs.send('newFile', {
-            guid: data.guid
-          })
-        }, function(error) {
-          console.log('Error when uploading file', error)
+      .then((...args) => {
+        // Send a validation to ZetaPush server
+        // You can provide metadata and tags if needed
+        console.log('succes', args)
+        fs.send('newFile', {
+          guid: data.guid
+        })
+      }, (error) => {
+        console.log('Error when uploading file', error)
       })
     })
   }

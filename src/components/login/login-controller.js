@@ -42,21 +42,22 @@ export default class LoginController {
   connect() {
     console.log('on', 'weak', 'disonnected')
 
-    //setTimeout(() => {
-      const connectHandler = zp.on('/meta/connected', (...args) => {
-        console.log('on', 'connected', args)
+    const connectHandler = zp.on('/meta/connected', (...args) => {
+      console.log('on', 'connected', args)
 
-        zp.off(connectHandler)
-        groups.send('groups', {})
-        groups.send('groupUsers', {
-          group: 'GroupAccessToMyGda'
-        })
-        groups.send('listGrants', {
-          group: 'GroupAccessToMyGda'
-        })
+      zp.off(connectHandler)
+      groups.send('groups', {})
+      groups.send('groupUsers', {
+        group: 'GroupAccessToMyGda'
       })
+      groups.send('listGrants', {
+        group: 'GroupAccessToMyGda'
+      })
+    })
 
-      zp.connect(this.simple.getConnectionData(this.user.login, this.user.password, null), this.ZetaPush.API_URL)
-    //}, 0)
+    const { login, password } = this.user
+    const connection = this.simple.getConnectionData(login, password, null)
+
+    zp.connect(connection, this.ZetaPush.API_URL)
   }
 }

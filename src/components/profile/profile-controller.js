@@ -78,8 +78,7 @@ export default class ProfileController {
     console.log('ProfileController::get')
     gda.send('get', {
       table: 'User',
-      key: `Model`,
-      //owner: 'IKCQQYmVVnToHpIrsXfgHQ' // UserId de la personne dont on souhaite voir les données
+      key: `Model`
     })
   }
 }

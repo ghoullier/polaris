@@ -36,7 +36,7 @@
     "max-len": [2, 100, 4],
     "indent": [2, 2],
     "quotes": [1, "single"],
-    "semi": [2, "always"],
+    "semi": [2, "never"],
     "space-after-keywords": [2, "always"],
     "space-before-blocks": [2, "always"],
     "space-before-function-paren": [2, { "anonymous": "always", "named": "never" }],
