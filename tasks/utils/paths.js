@@ -26,4 +26,4 @@ export default {
     images: `${BASE_DIST_PATH}css/images/`,
     fonts: `${BASE_DIST_PATH}fonts/`
   }
-};
+}
