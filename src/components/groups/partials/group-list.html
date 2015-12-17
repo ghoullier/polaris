@@ -1,0 +1,36 @@
+<section class="View View--GroupList row">
+  <h1>GroupList</h1>
+  <form name="create" ng-submit="groupList.createGroup($event)" class="Form Form--GroupList-Create">
+    <div class="alert alert-danger" role="alert" ng-repeat="error in groupList.errors track by $index">
+      <button type="button" class="close" aria-label="Close" ng-click="groupList.dismissError(error)"><span aria-hidden="true">×</span></button>
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <strong>Error!</strong> {{error.message}}
+    </div>
+    <fieldset>
+      <legend>Votre nouveau groupe</legend>
+      <div class="form-group">
+        <label for="groupList-model-group">Identifiant*</label>
+        <input id="groupList-model-group" name="group" class="form-control" type="text" required ng-model="groupList.model.group"/>
+      </div>
+      <div class="form-group">
+        <label for="groupList-model-groupName">Nom*</label>
+        <input id="groupList-model-groupName" name="groupName" class="form-control" type="text" required ng-model="groupList.model.groupName"/>
+      </div>
+    </fieldset>
+    <div class="btn-group" role="group">
+      <button type="submit" class="btn btn-success">Create Group</button>
+    </div>
+  </form>
+  <div>
+    <ul>
+      <li ng-repeat="item in groupList.list track by item.group">
+        <a ui-sref="groups.details(item)" title="{{item.groupName}}">{{item.groupName}}<a>
+        <button type="button" ng-click="groupList.deleteGroup(item.group)" class="btn btn-danger">delete</button>
+      </li>
+    </ul>
+    <div class="btn-group" role="group">
+      <button type="button" ng-click="groupList.listGroups()" class="btn btn-primary">List Groups</button>
+    </div>
+  </div>
+  <div ui-view></div>
+</section>

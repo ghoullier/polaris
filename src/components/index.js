@@ -3,6 +3,7 @@ import register from './register'
 import profile from './profile'
 import upload from './upload'
 import playground from './playground'
+import groups from './groups'
 
 import router from './router'
 
@@ -16,7 +17,8 @@ export default angular
     register.name,
     profile.name,
     upload.name,
-    playground.name
+    playground.name,
+    groups.name
   ])
 
   .config(router)

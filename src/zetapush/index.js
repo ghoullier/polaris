@@ -64,14 +64,14 @@ export const initialize = (callback) => {
     } else {
       AuthentStrategy.clearToken()
     }
+  })
+  zp.onConnected((data) => {
+    console.log('on', 'zp', 'connected', data)
 
     if (!bootstraped) {
       callback()
     }
     bootstraped = true
-  })
-  zp.onConnected((data) => {
-    console.log('on', 'zp', 'connected', data)
   })
   // Auto connection
   if (AuthentStrategy.isWeakAuthent()) {
