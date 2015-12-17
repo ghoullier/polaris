@@ -16,7 +16,7 @@ export default class GroupListController extends ZetaPushController {
     this.list = []
 
     // Subscriptions
-    macro.on('groupCreated', ({ channel, data }) => {
+    this.on(macro, 'groupCreated', ({ channel, data }) => {
       console.timeEnd('createGroup')
       console.log('on', 'macro', 'groupCreated', channel, data)
 
@@ -31,7 +31,7 @@ export default class GroupListController extends ZetaPushController {
 
       $scope.$digest()
     })
-    macro.on('groupDeleted', ({ channel, data }) => {
+    this.on(macro, 'groupDeleted', ({ channel, data }) => {
       console.timeEnd('deleteGroup')
       console.log('on', 'macro', 'groupDeleted', channel, data)
 
@@ -44,7 +44,7 @@ export default class GroupListController extends ZetaPushController {
 
       $scope.$digest()
     })
-    groups.on('groups', ({ channel, data }) => {
+    this.on(groups, 'groups', ({ channel, data }) => {
       console.timeEnd('groups')
       console.log('on', 'groups', 'groups', channel, data)
 

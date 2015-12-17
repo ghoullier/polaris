@@ -1,12 +1,25 @@
 <section class="View View--GroupDetails row">
   <h1>GroupDetails</h1>
   <div>
+    <h2>Group Users</h2>
     <ul>
-      <li ng-repeat="item in groupDetails.models.users track by $index">
+      <li ng-repeat="item in groupDetails.model.users track by $index">
         <span>{{item}}<span>
         <button type="button" ng-click="groupDetails.deleteUser(item)" class="btn btn-danger">delete</button>
       </li>
     </ul>
-    <div class="btn-group" role="group"></div>
+  </div>
+  <div>
+    <h2>All Users</h2>
+    <div class="btn-group" role="group">
+      <button type="button" ng-click="groupDetails.getGroupDetails()" class="btn btn-primary">getGroupDetails</button>
+      <button type="button" ng-click="groupDetails.getAllUsers()" class="btn btn-primary">getAllUsers</button>
+    </div>
+    <ul>
+      <li ng-repeat="item in groupDetails.users track by item.__key">
+        <span>{{item.Details.login}}</span>
+        <button type="button" ng-click="groupDetails.addUserInGroup(item.Details)" class="btn btn-success">addToGroup</button>
+      </li>
+    </ul>
   </div>
 </section>
