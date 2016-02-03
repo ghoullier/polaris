@@ -2,10 +2,10 @@ import fs from 'fs'
 
 import paths from './paths'
 import args from './cli-args'
-import string from './string'
+import { compile } from './string'
 
 const env = args.env || 'dev'
-const configPath = string.compile(paths.sources.config, {
+const configPath = compile(paths.sources.config, {
   env: env
 })
 

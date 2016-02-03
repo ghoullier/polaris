@@ -4,27 +4,25 @@ import sequence from 'run-sequence'
 
 import args from './utils/cli-args'
 import paths from './utils/paths'
-import string from './utils/string'
+import { compile } from './utils/string'
 import * as watcher from './utils/watcher'
 
-const reload = browserSync.reload
-const dist = paths.dist
-const sources = paths.sources
-const entries = sources.entries
+const { reload } = browserSync
+const { dist, sources } = paths
+const { entries } = sources
 const env = args.env || 'dev'
-const config = string.compile(paths.sources.config, {
+const config = compile(sources.config, {
   env: env
 })
 
-
-export function task(callback) {
+export const task = (callback) => {
   sequence(
     ['watch.assets', 'watch.app'],
     callback
   )
 }
 
-export function assets() {
+export const assets = () => {
   // Watch all application scripts
   gulp.watch([sources.scripts], [
     'lint'
@@ -62,7 +60,7 @@ export function assets() {
   ]).on('change', reload)
 }
 
-export function app() {
+export const app = () => {
   // Watch app
   return watcher.app()
 }

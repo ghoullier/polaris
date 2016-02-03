@@ -8,7 +8,7 @@ import paths from './utils/paths'
 import { onGenericError } from './utils/handlers'
 
 export default () => {
-  var optimize = args.optimize
+  const { optimize } = args
   return gulp.src(paths.sources.images)
     // Catch errors
     .pipe(plumber({
@@ -21,5 +21,5 @@ export default () => {
       svgoPlugins: [{removeViewBox: false}]
     }) : util.noop())
     .pipe(gulp.dest(paths.dist.images))
-  
+
 }

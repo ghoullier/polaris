@@ -1,7 +1,0 @@
-const SIMPLE_AUTHENTIFICATION_ID = 'ukQT';
-const GROUP_ID = 'hvxh';
-const GDA_ID = 'zFmP';
-
-const GROUP_ACCESS_TO_MY_GDA = 'GroupAccessToMyGda';
-
-const ADMIN_ID = 'FWkASINrCV_ZuicephCnTQ';
